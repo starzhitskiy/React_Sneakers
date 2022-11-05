@@ -32,12 +32,12 @@ function Home({
           {searchValue ? `Search by request: "${searchValue}"` : 'All Shoes'}
         </h1>
         <div className="search-block d-flex">
-          <img src="/img/search.svg" alt="Search" />
+          <img src="img/search.svg" alt="Search" />
           {searchValue && (
             <img
               onClick={() => setSearchValue('')}
               className="removeBtn clear"
-              src="/img/btn-remove.svg"
+              src="img/btn-remove.svg"
               alt="Remove"
             />
           )}
