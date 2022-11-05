@@ -42,14 +42,14 @@ function App() {
   const onAddToCart = async (obj) => {
     try {
       const findItem = cartItems.find(
-        (item) => Number(item.id) === Number(obj.id)
+        (item) => Number(item.parentId) === Number(obj.id)
       );
       if (findItem) {
         setCartItems((prev) =>
-          prev.filter((item) => Number(item.id) !== Number(obj.id))
+          prev.filter((item) => Number(item.parentId) !== Number(obj.id))
         );
         await axios.delete(
-          `https://63628e1b66f75177ea32a8f1.mockapi.io/cart/${obj.id}`
+          `https://63628e1b66f75177ea32a8f1.mockapi.io/cart/${findItem.id}`
         );
       } else {
         setCartItems((prev) => [...prev, obj]);
@@ -57,6 +57,7 @@ function App() {
           'https://63628e1b66f75177ea32a8f1.mockapi.io/cart',
           obj
         );
+
         setCartItems((prev) =>
           prev.map((item) => {
             if (item.parentId === data.parentId) {
@@ -114,7 +115,7 @@ function App() {
   };
 
   const isItemAdded = (id) => {
-    return cartItems.some((obj) => Number(obj.id) === Number(id));
+    return cartItems.some((obj) => Number(obj.parentId) === Number(id));
   };
 
   return (

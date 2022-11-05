@@ -53,7 +53,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
 
         {items.length > 0 ? (
           <div className="d-flex flex-column flex">
-            <div className="items">
+            <div className="items flex">
               {items.map((obj) => (
                 <div
                   key="obj.id"
@@ -87,7 +87,7 @@ function Drawer({ onClose, onRemove, items = [], opened }) {
                 <li>
                   <span>Taxes 5%:</span>
                   <div></div>
-                  <b>{(totalPrice / 100) * 5} $</b>
+                  <b>{((totalPrice / 100) * 5).toFixed(1)} $</b>
                 </li>
               </ul>
               <button
